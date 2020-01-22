@@ -9,7 +9,7 @@ Feature: Testing Fixer API
   Scenario:  Get All currencies and store 10 in CSV
 
     # Checking that site is responsive.
-    Given I send a GET to URL "{Site}"
+    And I send a GET to URL "{Site}"
     And response code is "200"
 
     # Getting the latest currency rates.

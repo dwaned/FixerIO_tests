@@ -7,7 +7,7 @@ This repository contains a testing framework to test the Fixer.IO API
 
 #### Implementation
 
-Using a boilerplate project from an open-source framework called [Dtective] (http://dtective.io/), it contains a Maven solution using Apache HTTPClient library for HTTP communication and Cucumber as a BDD layer.
+Using a boilerplate project from an open-source framework called [Dtective](http://dtective.io), it contains a Maven solution using Apache HTTPClient library for HTTP communication and Cucumber as a BDD layer.
 
 The ApiTests.feature under *src/test/resources/quality/FixerIO/* contains the required scenario for Part 2.
 

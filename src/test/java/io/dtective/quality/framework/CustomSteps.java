@@ -33,7 +33,7 @@ public class CustomSteps {
         Object[] ratesObj = ratesMap.entrySet().toArray();
 
        /*
-        Getting x random key value pairs from the rates and storing them in CSV
+        Getting x random key value pairs from the rates and storing them in CSV.
         */
 
         Map<String, String> output = new HashMap<String, String>();

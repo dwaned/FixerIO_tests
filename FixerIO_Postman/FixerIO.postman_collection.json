@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "a2544eb6-eb4a-4fe2-ac23-118bb855fc9a",
+		"name": "FixerIO",
+		"description": "This collection contains requests against the Fixer.IO API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Latest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_URL}}/latest?access_key={{api_key}}",
+					"host": [
+						"{{base_URL}}"
+					],
+					"path": [
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{api_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb55dbcf-dc6c-44cf-88f1-56fbee7053a9",
+						"exec": [
+							"const moment = require('moment');",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Check success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"",
+							"pm.test(\"Check timestamp is correct\", function () {",
+							"    //Checking validity of unix timestamp value",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isValid()).to.be.true;",
+							"    ",
+							"    //Checking that the price has a timestamp from the last hour.",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isAfter(moment().subtract(60,'minutes').format())).to.be.true;",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"Check base currency is EUR\", function () {",
+							"    pm.expect(jsonData.base).to.eql(\"EUR\");",
+							"});",
+							"",
+							"pm.test(\"Check date is today\", function () {",
+							"    pm.globals.set(\"timestamp\", moment().format(\"YYYY-MM-DD\"));",
+							"    pm.expect(jsonData.date).to.eql(pm.globals.get(\"timestamp\"));",
+							"});",
+							"",
+							"pm.test(\"Check rate is for USD\", function () {",
+							"    pm.expect(jsonData.rates).to.have.property(\"USD\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_URL}}/latest?access_key={{api_key}}&symbols=USD",
+					"host": [
+						"{{base_URL}}"
+					],
+					"path": [
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "symbols",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3efb5a5f-5b50-45a9-b7f0-1c70e1d0362f",
+						"exec": [
+							"const moment = require('moment');",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Check success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"",
+							"pm.test(\"Check timestamp is correct\", function () {",
+							"    //Checking validity of unix timestamp value",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isValid()).to.be.true;",
+							"    ",
+							"    //Checking that the price has a timestamp from the last hour.",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isAfter(moment().subtract(60,'minutes').format())).to.be.true;",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"Check base currency is EUR\", function () {",
+							"    pm.expect(jsonData.base).to.eql(\"EUR\");",
+							"});",
+							"",
+							"pm.test(\"Check date is today\", function () {",
+							"    pm.globals.set(\"timestamp\", moment().format(\"YYYY-MM-DD\"));",
+							"    pm.expect(jsonData.date).to.eql(pm.globals.get(\"timestamp\"));",
+							"});",
+							"",
+							"pm.test(\"Check rate is for AUD\", function () {",
+							"    pm.expect(jsonData.rates).to.have.property(\"AUD\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_URL}}/latest?access_key={{api_key}}&symbols=AUD",
+					"host": [
+						"{{base_URL}}"
+					],
+					"path": [
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "symbols",
+							"value": "AUD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GBP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5131b684-b9ad-42da-a666-3622f34a0e99",
+						"exec": [
+							"const moment = require('moment');",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Check success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"",
+							"pm.test(\"Check timestamp is correct\", function () {",
+							"    //Checking validity of unix timestamp value",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isValid()).to.be.true;",
+							"    ",
+							"    //Checking that the price has a timestamp from the last hour.",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isAfter(moment().subtract(60,'minutes').format())).to.be.true;",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"Check base currency is EUR\", function () {",
+							"    pm.expect(jsonData.base).to.eql(\"EUR\");",
+							"});",
+							"",
+							"pm.test(\"Check date is today\", function () {",
+							"    pm.globals.set(\"timestamp\", moment().format(\"YYYY-MM-DD\"));",
+							"    pm.expect(jsonData.date).to.eql(pm.globals.get(\"timestamp\"));",
+							"});",
+							"",
+							"pm.test(\"Check rate is for GBP\", function () {",
+							"    pm.expect(jsonData.rates).to.have.property(\"GBP\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_URL}}/latest?access_key={{api_key}}&symbols=GBP",
+					"host": [
+						"{{base_URL}}"
+					],
+					"path": [
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "symbols",
+							"value": "GBP"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JPY",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2762e9eb-30a8-4957-9743-d9308a030ca7",
+						"exec": [
+							"const moment = require('moment');",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Check success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"",
+							"pm.test(\"Check timestamp is correct\", function () {",
+							"    //Checking validity of unix timestamp value",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isValid()).to.be.true;",
+							"    ",
+							"    //Checking that the price has a timestamp from the last hour.",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isAfter(moment().subtract(60,'minutes').format())).to.be.true;",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"Check base currency is EUR\", function () {",
+							"    pm.expect(jsonData.base).to.eql(\"EUR\");",
+							"});",
+							"",
+							"pm.test(\"Check date is today\", function () {",
+							"    pm.globals.set(\"timestamp\", moment().format(\"YYYY-MM-DD\"));",
+							"    pm.expect(jsonData.date).to.eql(pm.globals.get(\"timestamp\"));",
+							"});",
+							"",
+							"pm.test(\"Check rate is for JPY\", function () {",
+							"    pm.expect(jsonData.rates).to.have.property(\"JPY\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_URL}}/latest?access_key={{api_key}}&symbols=JPY",
+					"host": [
+						"{{base_URL}}"
+					],
+					"path": [
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "symbols",
+							"value": "JPY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HKD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "af2f2d61-3ae9-43c7-a923-f0f495f621b0",
+						"exec": [
+							"const moment = require('moment');",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Check success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"",
+							"pm.test(\"Check timestamp is correct\", function () {",
+							"    //Checking validity of unix timestamp value",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isValid()).to.be.true;",
+							"    ",
+							"    //Checking that the price has a timestamp from the last hour.",
+							"    pm.expect(moment(jsonData.timestamp,\"X\").isAfter(moment().subtract(60,'minutes').format())).to.be.true;",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"Check base currency is EUR\", function () {",
+							"    pm.expect(jsonData.base).to.eql(\"EUR\");",
+							"});",
+							"",
+							"pm.test(\"Check date is today\", function () {",
+							"    pm.globals.set(\"timestamp\", moment().format(\"YYYY-MM-DD\"));",
+							"    pm.expect(jsonData.date).to.eql(pm.globals.get(\"timestamp\"));",
+							"});",
+							"",
+							"pm.test(\"Check rate is for HDK\", function () {",
+							"    pm.expect(jsonData.rates).to.have.property(\"HKD\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_URL}}/latest?access_key={{api_key}}&symbols=HKD",
+					"host": [
+						"{{base_URL}}"
+					],
+					"path": [
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "symbols",
+							"value": "HKD"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fbf1ca2a-2a6c-485f-b3c4-8bbeba07af29",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dfef267e-4b12-416e-a04f-0986c5d47a53",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

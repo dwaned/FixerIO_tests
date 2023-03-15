@@ -1,4 +1,6 @@
 # FixerIO_tests
+[![Java CI with Maven](https://github.com/dwaned/FixerIO_tests/actions/workflows/maven.yml/badge.svg)](https://github.com/dwaned/FixerIO_tests/actions/workflows/maven.yml)
+
 This repository contains a testing framework to test the Fixer.IO API
 
 1. You can find the Postman collection and environment under the folder called FixerIO_Postman
